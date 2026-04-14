@@ -1,0 +1,39 @@
+[user]
+	name = Louis Amon
+	email = louis.amon@amazutech.net
+
+[core]
+	editor = nano
+	autocrlf = input
+	whitespace = fix,trailing-space,cr-at-eol
+	excludesfile = ~/.gitignore_global
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	autoSetupRemote = true
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[color]
+	ui = auto
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	lg = log --oneline --graph --decorate --all
+	undo = reset HEAD~1 --mixed
+	save = stash push -m
+	aliases = config --get-regexp alias
+
+[credential]
+	helper = store
