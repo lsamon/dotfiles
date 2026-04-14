@@ -8,7 +8,7 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"  # popular theme with git branch in prompt
+ZSH_THEME="robbyrussell"  # popular theme with git branch in prompt
                        # alternatives: robbyrussell, powerlevel10k, avit
 
 # Plugins
