@@ -3,7 +3,7 @@
 	email = louis.amon@amazutech.net
 
 [core]
-	editor = nano
+	editor = cursor --wait
 	autocrlf = input
 	whitespace = fix,trailing-space,cr-at-eol
 	excludesfile = ~/.gitignore_global

@@ -118,5 +118,136 @@ fi
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# =============================================================================
+# Environment Variables
+# =============================================================================
+
+export EDITOR='cursor --wait'
+export VISUAL='cursor --wait'
+
+# ==============================================================================
+# Git
+# ==============================================================================
+
+alias g='git'
+alias gs='git status'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit -m'
+alias gca='git commit --amend'
+alias gp='git push'
+alias gpl='git pull'
+alias gl='git log --oneline --graph --decorate --all'
+alias gb='git branch'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gclean='git clean -fd'
+alias greset='git reset --hard HEAD'
+
+# dotfiles management (bare repo)
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# ==============================================================================
+# Ruby / Rails
+# ==============================================================================
+
+# rbenv (uncomment if using rbenv)
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - bash)"
+
+# rvm (uncomment if using rvm)
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# export PATH="$PATH:$HOME/.rvm/bin"
+
+# Bundler
+alias be='bundle exec'
+alias bi='bundle install'
+alias bu='bundle update'
+alias bo='bundle open'
+
+# Rails
+alias rs='bin/rails server'
+alias rc='bin/rails console'
+alias rr='bin/rails routes'
+alias rdb='bin/rails db:migrate'
+alias rdbc='bin/rails db:create'
+alias rdbr='bin/rails db:rollback'
+alias rdbs='bin/rails db:seed'
+alias rdbreset='bin/rails db:drop db:create db:migrate db:seed'
+alias rt='bin/rails test'
+alias rspec='bundle exec rspec'
+alias rgc='bin/rails generate controller'
+alias rgm='bin/rails generate model'
+alias rgmig='bin/rails generate migration'
+alias rlog='tail -f log/development.log'
+
+# ==============================================================================
+# Docker
+# ==============================================================================
+
+alias d='docker'
+alias di='docker images'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dexec='docker exec -it'
+alias dlogs='docker logs -f'
+alias dstop='docker stop $(docker ps -q)'           # stop all running containers
+alias dclean='docker system prune -f'               # remove unused data
+alias dcleanall='docker system prune -af --volumes' # full clean including volumes
+
+# Docker Compose
+alias dc='docker compose'
+alias dcu='docker compose up'
+alias dcud='docker compose up -d'
+alias dcd='docker compose down'
+alias dcr='docker compose restart'
+alias dcl='docker compose logs -f'
+alias dcb='docker compose build'
+alias dce='docker compose exec'
+alias dcp='docker compose pull'
+
+# Docker Compose Rails helpers
+alias dcrs='docker compose run --rm web bin/rails server'
+alias dcrc='docker compose run --rm web bin/rails console'
+alias dcrdb='docker compose run --rm web bin/rails db:migrate'
+
+# ==============================================================================
+# Kubernetes
+# ==============================================================================
+
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kgpa='kubectl get pods --all-namespaces'
+alias kgs='kubectl get services'
+alias kgd='kubectl get deployments'
+alias kgn='kubectl get nodes'
+alias kdp='kubectl describe pod'
+alias kds='kubectl describe service'
+alias kdd='kubectl describe deployment'
+alias kl='kubectl logs -f'
+alias kex='kubectl exec -it'
+alias kaf='kubectl apply -f'
+alias kdf='kubectl delete -f'
+alias kctx='kubectl config current-context'
+alias kns='kubectl config set-context --current --namespace'
+alias kroll='kubectl rollout restart deployment'
+alias kwatch='watch -n 2 kubectl get pods'
+
+# Shorthand to switch context
+kuse() { kubectl config use-context "$1"; }
+
+# Show all resources in a namespace
+kall() { kubectl get all -n "${1:-default}"; }
+
+# ==============================================================================
+# Local overrides — not tracked in Git
+# ==============================================================================
+
 # Local overrides & secrets — not tracked in dotfiles
 [ -f ~/.bashrc.local ] && source ~/.bashrc.local
