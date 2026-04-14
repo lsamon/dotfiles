@@ -117,3 +117,6 @@ if ! shopt -oq posix; then
 fi
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Local overrides & secrets — not tracked in dotfiles
+[ -f ~/.bashrc.local ] && source ~/.bashrc.local
